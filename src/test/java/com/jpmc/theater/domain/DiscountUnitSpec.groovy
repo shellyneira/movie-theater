@@ -10,7 +10,7 @@ class DiscountUnitSpec extends Specification {
 
     def 'should apply 25% OFF when time is 11 am'() {
         given:
-        Discount discount = new Discount()
+            Discount discount = new Discount()
         when:
             double result = discount.applyBestDiscount(12.5, DateMock.todayEleven(), false, 1)
         then:
@@ -73,7 +73,7 @@ class DiscountUnitSpec extends Specification {
 
     def 'should apply the greatest discount given two or more discount possibilities'() {
         given:
-        Discount discount = new Discount()
+            Discount discount = new Discount()
         when:
             double result = discount.applyBestDiscount(12.5, DateMock.todayNoon(), true, 1)
         then:
@@ -82,7 +82,7 @@ class DiscountUnitSpec extends Specification {
 
     def 'should return zero if the discount make the price negative'() {
         given:
-        Discount discount = new Discount()
+            Discount discount = new Discount()
         when:
             double result = discount.applyBestDiscount(1, DateMock.todayNoon(), true, 1)
         then:
