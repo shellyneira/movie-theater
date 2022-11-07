@@ -12,8 +12,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>10</source>
-					<target>10</target>
+					<source>19</source>
+					<target>19</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -22,7 +22,7 @@
 	<name>movie-theater</name>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>19</java.version>
 		<maven.comiler.source>${java.version}</maven.comiler.source>
 		<maven.comiler.target>${java.version}</maven.comiler.target>
 		<junit.jupiter.version>5.3.2</junit.jupiter.version>
@@ -30,6 +30,8 @@
 	</properties>
 
 	<dependencies>
+
+		<!--	[Test Frameworks] JUnit	-->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
@@ -47,6 +49,63 @@
 			<artifactId>junit-platform-launcher</artifactId>
 			<version>${junit.platform.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!--	[Test Frameworks] Spock and Groovy	-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>1.0-groovy-2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.4.4</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!--	[Boilerplate Reducer] Annotations	-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!--	[JSON] To JDK 8+ be able to convert objects to JSON -->
+		<!--	Object to JSON converter	-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.4.2</version>
+		</dependency>
+
+		<!--	Parameter names	-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-parameter-names</artifactId>
+			<version>2.13.4</version>
+		</dependency>
+
+		<!--	Java 8 Date/time	-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jdk8</artifactId>
+			<version>2.13.4</version>
+		</dependency>
+
+		<!--	Java 8 Datatypes	-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.13.4</version>
 		</dependency>
 	</dependencies>
 </project>

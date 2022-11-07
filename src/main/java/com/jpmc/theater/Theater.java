@@ -1,22 +1,23 @@
 package com.jpmc.theater;
 
+import com.jpmc.theater.common.StringUtils;
+import com.jpmc.theater.domain.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Theater {
 
     LocalDateProvider provider;
-    private List<Showing> schedule;
+    private static List<Showing> schedule;
 
     public Theater(LocalDateProvider provider) {
         this.provider = provider;
 
-        Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), 12.5, 1);
-        Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85), 11, 0);
-        Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95), 9, 0);
+        Movie spiderMan = new Movie( "Spider-Man: No Way Home", Duration.ofMinutes( 90 ), 12.5, true);
+        Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85), 11, false);
+        Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95), 9, false);
         schedule = List.of(
             new Showing(turningRed, 1, LocalDateTime.of(provider.currentDate(), LocalTime.of(9, 0))),
             new Showing(spiderMan, 2, LocalDateTime.of(provider.currentDate(), LocalTime.of(11, 0))),
@@ -30,7 +31,7 @@ public class Theater {
         );
     }
 
-    public Reservation reserve(Customer customer, int sequence, int howManyTickets) {
+    public Ticket reserve(Customer customer, int sequence, int howManyTickets) {
         Showing showing;
         try {
             showing = schedule.get(sequence - 1);
@@ -38,37 +39,27 @@ public class Theater {
             ex.printStackTrace();
             throw new IllegalStateException("not able to find any showing for given sequence " + sequence);
         }
-        return new Reservation(customer, showing, howManyTickets);
+        return new Ticket(customer, showing, howManyTickets);
     }
 
     public void printSchedule() {
         System.out.println(provider.currentDate());
         System.out.println("===================================================");
         schedule.forEach(s ->
-                System.out.println(s.getSequenceOfTheDay() + ": " + s.getStartTime() + " " + s.getMovie().getTitle() + " " + humanReadableFormat(s.getMovie().getRunningTime()) + " $" + s.getMovieFee())
+                System.out.println( s.sequenceOfTheDay() + ": " + s.startTime() + " " + s.movie().title() + " " + StringUtils.humanReadableFormat( s.movie().runningTime() ) + " $" + s.movie().price() )
         );
         System.out.println("===================================================");
     }
 
-    public String humanReadableFormat(Duration duration) {
-        long hour = duration.toHours();
-        long remainingMin = duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours());
-
-        return String.format("(%s hour%s %s minute%s)", hour, handlePlural(hour), remainingMin, handlePlural(remainingMin));
-    }
-
-    // (s) postfix should be added to handle plural correctly
-    private String handlePlural(long value) {
-        if (value == 1) {
-            return "";
-        }
-        else {
-            return "s";
-        }
+    public static void printScheduleAsJson(){
+        schedule.forEach(s -> {
+            System.out.println(StringUtils.stringToJson(s));
+        });
     }
 
     public static void main(String[] args) {
         Theater theater = new Theater(LocalDateProvider.singleton());
         theater.printSchedule();
+        theater.printScheduleAsJson();
     }
 }
