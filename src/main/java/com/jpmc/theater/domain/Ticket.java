@@ -1,9 +1,5 @@
 package com.jpmc.theater.domain;
 
-import com.jpmc.theater.domain.Customer;
-import com.jpmc.theater.domain.Discount;
-import com.jpmc.theater.domain.Fee;
-import com.jpmc.theater.domain.Showing;
 import lombok.Getter;
 
 @Getter
