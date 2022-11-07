@@ -30,6 +30,8 @@
 	</properties>
 
 	<dependencies>
+
+		<!--	[Test Frameworks] JUnit	-->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
@@ -48,6 +50,28 @@
 			<version>${junit.platform.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!--	[Test Frameworks] Spock and Groovy	-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>1.0-groovy-2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.4.4</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!--	[Boilerplate Reducer] Annotations	-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
