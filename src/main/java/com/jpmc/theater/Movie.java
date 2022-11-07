@@ -32,7 +32,7 @@ public class Movie {
     }
 
     public double calculateTicketPrice(Showing showing) {
-        return ticketPrice - getDiscount(showing.getSequenceOfTheDay());
+        return ticketPrice - getDiscount(showing.sequenceOfTheDay());
     }
 
     private double getDiscount(int showSequence) {
