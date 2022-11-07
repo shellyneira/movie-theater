@@ -1,6 +1,6 @@
 package com.jpmc.theater.common.mocks;
 
-import com.jpmc.theater.Movie;
+import com.jpmc.theater.domain.Movie;
 
 import java.time.Duration;
 

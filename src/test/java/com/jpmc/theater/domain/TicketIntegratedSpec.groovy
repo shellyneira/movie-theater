@@ -1,7 +1,6 @@
 package com.jpmc.theater.domain
 
-import com.jpmc.theater.Showing
-import com.jpmc.theater.Ticket
+
 import com.jpmc.theater.common.mocks.DateMock
 import com.jpmc.theater.common.mocks.MovieMock
 import com.jpmc.theater.common.mocks.CustomerMock

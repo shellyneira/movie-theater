@@ -1,6 +1,6 @@
 package com.jpmc.theater.common.mocks;
 
-import com.jpmc.theater.Customer;
+import com.jpmc.theater.domain.Customer;
 
 public class CustomerMock {
     public static Customer shelly() {

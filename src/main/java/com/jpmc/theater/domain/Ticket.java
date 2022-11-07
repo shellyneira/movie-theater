@@ -1,5 +1,9 @@
-package com.jpmc.theater;
+package com.jpmc.theater.domain;
 
+import com.jpmc.theater.domain.Customer;
+import com.jpmc.theater.domain.Discount;
+import com.jpmc.theater.domain.Fee;
+import com.jpmc.theater.domain.Showing;
 import lombok.Getter;
 
 @Getter
@@ -17,10 +21,10 @@ public class Ticket {
     }
 
     public void applyDiscount() {
-        this.totalPrice = Discount.applyBestDiscount(totalPrice, showing.startTime(), showing.movie().isSpecial(), showing.sequenceOfTheDay());
+        this.totalPrice = Discount.applyBestDiscount( totalPrice, showing.startTime(), showing.movie().isSpecial(), showing.sequenceOfTheDay() );
     }
 
     public void applyFee() {
-        this.totalPrice = Fee.applyFee(totalPrice, seats);
+        this.totalPrice = Fee.applyFee( totalPrice, seats );
     }
 }

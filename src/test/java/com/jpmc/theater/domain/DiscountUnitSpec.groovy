@@ -1,6 +1,6 @@
 package com.jpmc.theater.domain
 
-import com.jpmc.theater.Discount
+
 import com.jpmc.theater.common.mocks.DateMock
 import spock.lang.Specification
 import spock.lang.Unroll
