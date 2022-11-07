@@ -1,5 +1,8 @@
 package com.jpmc.theater;
 
+import com.jpmc.theater.common.StringUtils;
+import com.jpmc.theater.domain.*;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -14,7 +17,7 @@ public class Theater {
     public Theater(LocalDateProvider provider) {
         this.provider = provider;
 
-        Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), 12.5, true);
+        Movie spiderMan = new Movie( "Spider-Man: No Way Home", Duration.ofMinutes( 90 ), 12.5, true);
         Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85), 11, false);
         Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95), 9, false);
         schedule = List.of(
@@ -45,26 +48,9 @@ public class Theater {
         System.out.println(provider.currentDate());
         System.out.println("===================================================");
         schedule.forEach(s ->
-                System.out.println(s.sequenceOfTheDay() + ": " + s.startTime() + " " + s.movie().title() + " " + humanReadableFormat(s.movie().runningTime()) + " $" + s.movie().price())
+                System.out.println( s.sequenceOfTheDay() + ": " + s.startTime() + " " + s.movie().title() + " " + StringUtils.humanReadableFormat( s.movie().runningTime() ) + " $" + s.movie().price() )
         );
         System.out.println("===================================================");
-    }
-
-    public String humanReadableFormat(Duration duration) {
-        long hour = duration.toHours();
-        long remainingMin = duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours());
-
-        return String.format("(%s hour%s %s minute%s)", hour, handlePlural(hour), remainingMin, handlePlural(remainingMin));
-    }
-
-    // (s) postfix should be added to handle plural correctly
-    private String handlePlural(long value) {
-        if (value == 1) {
-            return "";
-        }
-        else {
-            return "s";
-        }
     }
 
     public static void main(String[] args) {
