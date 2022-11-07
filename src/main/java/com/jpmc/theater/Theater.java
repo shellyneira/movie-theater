@@ -30,7 +30,7 @@ public class Theater {
         );
     }
 
-    public Reservation reserve(Customer customer, int sequence, int howManyTickets) {
+    public Ticket reserve(Customer customer, int sequence, int howManyTickets) {
         Showing showing;
         try {
             showing = schedule.get(sequence - 1);
@@ -38,7 +38,7 @@ public class Theater {
             ex.printStackTrace();
             throw new IllegalStateException("not able to find any showing for given sequence " + sequence);
         }
-        return new Reservation(customer, showing, howManyTickets);
+        return new Ticket(customer, showing, howManyTickets);
     }
 
     public void printSchedule() {

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ReservationTests {
+public class TicketTests {
 
     @Test
     void totalFee() {
@@ -17,6 +17,8 @@ public class ReservationTests {
                 1,
                 LocalDateTime.now()
         );
-        assertTrue( new Reservation(customer, showing, 3).applyFee() == 37.5 );
+        var ticket = new Ticket(customer, showing, 3);
+        ticket.applyFee();
+        assertTrue(ticket.getTotalPrice() == 37.5 );
     }
 }
