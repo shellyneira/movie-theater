@@ -18,11 +18,11 @@ public record Discount() {
      * @return amount after the applied discount
      */
     public static double applyBestDiscount(final double amount, final LocalDateTime startTime, final boolean isSpecial, final int sequenceOfTheDay) {
-       final var percentageDiscount = Math.max( getCommercialTimeDiscount( startTime.getHour() ), getSpecialMovieDiscount( isSpecial ) );
-       final var dollarsDiscount = getSequenceDiscount(sequenceOfTheDay);
-       final var amountPercentageOff = applyPercentageOff( amount, percentageDiscount );
-       final var amountDollarsOf = applyDollarsOff( amount, dollarsDiscount );
-       return Math.min(amountPercentageOff, amountDollarsOf);
+        final var percentageDiscount = Math.max( getCommercialTimeDiscount( startTime.getHour() ), getSpecialMovieDiscount( isSpecial ) );
+        final var dollarsDiscount = getSequenceDiscount(sequenceOfTheDay);
+        final var amountPercentageOff = applyPercentageOff( amount, percentageDiscount );
+        final var amountDollarsOff = applyDollarsOff( amount, dollarsDiscount );
+        return Math.min(amountPercentageOff, amountDollarsOff);
     }
 
     private static double getSpecialMovieDiscount(final boolean isSpecial){
