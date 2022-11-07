@@ -2,17 +2,15 @@ package com.jpmc.theater;
 
 import com.jpmc.theater.common.StringUtils;
 import com.jpmc.theater.domain.*;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Theater {
 
     LocalDateProvider provider;
-    private List<Showing> schedule;
+    private static List<Showing> schedule;
 
     public Theater(LocalDateProvider provider) {
         this.provider = provider;
@@ -53,8 +51,15 @@ public class Theater {
         System.out.println("===================================================");
     }
 
+    public static void printScheduleAsJson(){
+        schedule.forEach(s -> {
+            System.out.println(StringUtils.stringToJson(s));
+        });
+    }
+
     public static void main(String[] args) {
         Theater theater = new Theater(LocalDateProvider.singleton());
         theater.printSchedule();
+        theater.printScheduleAsJson();
     }
 }
