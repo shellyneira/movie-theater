@@ -12,6 +12,6 @@ public class Reservation {
     }
 
     public double applyFee() {
-        return Fee.applyFee(showing.movie().getTicketPrice(), audienceCount);
+        return Fee.applyFee(showing.movie().price(), audienceCount);
     }
 }
